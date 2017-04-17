@@ -1,4 +1,18 @@
 <?php
+$headerOptions = array(
+ ‘http’=>array(
+   ‘method’=>’POST’,
+   ‘header’=> “Content-Type: application/x-www-form-urlencoded\r\n”
+   .”Authorization: Bearer “.LINE_TOKEN.”\r\n”
+   .”Content-Length: “.strlen($queryData).”\r\n”,
+   ‘content’ => $queryData
+ ),
+ ‘ssl’=>array(
+   “verify_peer”=>false,
+   “verify_peer_name”=>false,
+  ),
+);
+
 define(‘LINE_API’,”https://notify-api.line.me/api/notify");
  
 $token = “oDuHH6o6yF3SFkJfRZPitbesB0nEEvwsxdbcwFG0uzw”; //ใส่Token ที่copy เอาไว้
