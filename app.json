@@ -1,0 +1,19 @@
+{
+  "name": "LINE Login starter",
+  "description": "Sample Application for LINE Login",
+  "repository": "https://github.com/line/line-login-starter",
+  "env": {
+    "LINECORP_PLATFORM_CHANNEL_CHANNELID": {
+      "description": "1509516631",
+      "required": true
+    },
+    "LINECORP_PLATFORM_CHANNEL_CHANNELSECRET": {
+      "description": "e7bfd70884e815db7fc660bd9ae0b896",
+      "required": true
+    },
+    "LINECORP_PLATFORM_CHANNEL_CALLBACKURL": {
+      "description": "https://fitness-thai.herokuapp.com/",
+      "required": true
+    }
+  }
+}
