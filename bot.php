@@ -1,5 +1,5 @@
 <?php
-require 'connection.php';  
+//require 'connection.php';  
 
 $access_token = 'E9c+4o7Kfy4N49DvsotR4kI7bZtM6bc8QzZZEcyAarMn0FYEPsIVNVicU7w5BhxcNDelY+ZeMRjk92F8CRniTQXRffGkzhNcP9QVgwUdS9PykBAd1vTSLTfjmL0qmQnucK76cjoDo9e1nX/cbhaxagdB04t89/1O/w1cDnyilFU=';
 
@@ -28,7 +28,7 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			if $text == 'mid' then
+			if $text == 'id' then
 			{$messages = [
 				'type' => 'text',
 				'text' => 'ข้อมูลคุณคือ '.$text.' Dynamic Token = '.$replyToken.' Userid = '.$userid
