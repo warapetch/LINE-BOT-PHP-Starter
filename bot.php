@@ -9,12 +9,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 $datas = json_encode($events);
 
-if (!is_null($events['events'][0]['source']['userId'])) then
-{
-   $userid = $events['events'][0]['source']['userId']}
-else
-{$userid = 'GroupID='.$events['events']['source']['groupId'];}
-
+$userid = $events['events'][0]['source']['userId'];
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
