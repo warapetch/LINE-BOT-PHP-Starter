@@ -1,4 +1,6 @@
 <?php
+require 'connection.php';  
+
 $access_token = 'E9c+4o7Kfy4N49DvsotR4kI7bZtM6bc8QzZZEcyAarMn0FYEPsIVNVicU7w5BhxcNDelY+ZeMRjk92F8CRniTQXRffGkzhNcP9QVgwUdS9PykBAd1vTSLTfjmL0qmQnucK76cjoDo9e1nX/cbhaxagdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -6,7 +8,10 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
-$userid = $events['events']['source']['userId'];
+if (!is_null($events['events'][0]['source']['userId'])) then
+   $userid = $events['events'][0]['source']['userId']
+else
+$userid = $events['events'][1]['source']['userId']; 
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
@@ -23,10 +28,16 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			$messages = [
+			if $text == 'mid' then
+			{$messages = [
 				'type' => 'text',
-				'text' => 'ข้อมูลของคุณคือ '.$text.' Dynamic Token = '.$replyToken.' Userid = '.$userid
-			];
+				'text' => 'ข้อมูลคุณคือ '.$text.' Dynamic Token = '.$replyToken.' Userid = '.$userid
+			];}
+			else
+			{$messages = [
+				'type' => 'text',
+				'text' => 'Echo '.$text];				
+		         }
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
@@ -47,7 +58,19 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
+ // บันทึกลงฐาน
+  $sql = "insert ignore into lineuser(userid,linetoken) values ('$userid','$replyToken')";
+    
+  if ( mysql_query($sql)){ 
+	  }else { 
+	   echo "error message : ".mysql_error();
+      } 
+// 
+
 		}
 	}
+
 }
 echo "OK : token = ".$replyToken.' userid = '.$userid;
+
+?>
