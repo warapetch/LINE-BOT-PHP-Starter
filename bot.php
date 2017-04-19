@@ -5,11 +5,12 @@ $access_token = 'E9c+4o7Kfy4N49DvsotR4kI7bZtM6bc8QzZZEcyAarMn0FYEPsIVNVicU7w5Bhx
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
+
+$userid = $events['events'][0]['source']['userId'];
+
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
-	
-	$userid = $events['events']['source']['userId'];
-	
+
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		
@@ -49,4 +50,4 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK : user token = ".$replyToken;
+echo "OK : token = ".$replyToken.' userid = '.$userid;
