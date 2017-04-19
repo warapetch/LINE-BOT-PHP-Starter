@@ -8,9 +8,9 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 
-if (!is_null($events['events'][0]['source']['userId'])) then
-   $userid = $events['events'][0]['source']['userId']
-else
+//if (!is_null($events['events'][0]['source']['userId'])) then
+//   $userid = $events['events'][0]['source']['userId']
+//else
 $userid = $events['events']['source']['userId']; 
 
 // Validate parsed JSON data
