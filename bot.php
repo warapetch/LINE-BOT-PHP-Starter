@@ -1,21 +1,36 @@
 <?php
-//require 'connection.php';  
+require 'connection.php';  
 
 $access_token = 'E9c+4o7Kfy4N49DvsotR4kI7bZtM6bc8QzZZEcyAarMn0FYEPsIVNVicU7w5BhxcNDelY+ZeMRjk92F8CRniTQXRffGkzhNcP9QVgwUdS9PykBAd1vTSLTfjmL0qmQnucK76cjoDo9e1nX/cbhaxagdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
 $content = file_get_contents('php://input');
+
 // Parse JSON
 $events = json_decode($content, true);
 $datas = json_encode($events);
 
-$userid = $events['events'][0]['source']['userId'];
-$groupid = $events['events'][0]['source']['groupId'];
-//$roomid = '';//$events['events'][0]['source']['roomId'];
+if  ($events['events'][0]['source']['type'] == 'user') 
+    {
+		$userid = $events['events'][0]['source']['userId'];
+		$usercaption = ' userid=';
+	}
+else
+
+	if  ($events['events'][0]['source']['type'] == 'group') 
+	{
+		$userid = $events['events'][0]['source']['groupId'];
+	    $usercaption = ' groupid=';
+	}
+else
+{
+		$userid = $events['events'][0]['source']['roomId'];
+	    $usercaption = ' roomid=';	
+}
+
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
-
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		
@@ -26,13 +41,20 @@ if (!is_null($events['events'])) {
 			 		
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
+			
 			// Build message to reply back
+			if ($text == 'id'){
+			   $messages = [
+				           'type' => 'text',
+							'text' => 'ข้อมูลคุณคือ '.$text.' Dynamic Token = '.$replyToken.' |'.$usercaption.$userid.'| data='.$datas
+							];
+				}
+			else
 			$messages = [
-				'type' => 'text',
-				'text' => 'ข้อมูลคุณคือ '.$text.' Dynamic Token = '.$replyToken.' Userid = '.$userid.'|group='.$groupid.'|data='.$datas
-					];
-
+				           'type' => 'text',
+							'text' => 'Echo .. '.$text
+							];			
+			
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
@@ -41,7 +63,6 @@ if (!is_null($events['events'])) {
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -50,7 +71,6 @@ if (!is_null($events['events'])) {
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 			$result = curl_exec($ch);
 			curl_close($ch);
-
 			echo $result . "\r\n";
  // บันทึกลงฐาน
   $sql = "insert ignore into lineuser(userid,linetoken) values ('$userid','$replyToken')";
@@ -60,11 +80,8 @@ if (!is_null($events['events'])) {
 	   echo "error message : ".mysql_error();
       } 
 // 
-
 		}
 	}
-
 }
 echo "OK : token = ".$replyToken.' userid = '.$userid;
-
 ?>
