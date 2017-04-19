@@ -24,7 +24,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text.'/n Token = '.$replyToken.'/n userid = '.$userid
+				'text' => 'สวัสดี '.$text.' Dynamic Token = '.$replyToken.' Userid = '.$userid
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
