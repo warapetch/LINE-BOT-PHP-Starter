@@ -9,8 +9,8 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 $userid = $events['events'][0]['source']['userId'];
-$userid2 = $events['events'][1]['source']['userId']
-$userid3 = $events['events'][2]['source']['userId']
+$userid2 = $events['events'][1]['source']['userId'];
+$userid3 = $events['events'][2]['source']['userId'];
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
