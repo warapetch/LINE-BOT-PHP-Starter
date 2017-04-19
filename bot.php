@@ -10,9 +10,10 @@ $events = json_decode($content, true);
 $datas = json_encode($events);
 
 if (!is_null($events['events'][0]['source']['userId'])) then
-   $userid = $events['events'][0]['source']['userId']
+{
+   $userid = $events['events'][0]['source']['userId']}
 else
- $userid = 'GroupID='.$events['events']['source']['groupId'];
+{$userid = 'GroupID='.$events['events']['source']['groupId'];}
 
 
 // Validate parsed JSON data
