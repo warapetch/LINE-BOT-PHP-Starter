@@ -43,7 +43,7 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 			// Build message to reply back
-			if ($text == 'id'){
+			if ($text == 'data'){
 			   $messages = [
 				           'type' => 'text',
 							'text' => 'ข้อมูลคุณคือ '.$text.' Dynamic Token = '.$replyToken.' |'.$usercaption.$userid.'| data='.$datas
@@ -52,7 +52,7 @@ if (!is_null($events['events'])) {
 			else
 			$messages = [
 				           'type' => 'text',
-							'text' => 'Echo .. '.$text
+							'text' => 'สวัสดี BOT (พิมพ์คำว่า data เพื่อดูข้อมูล) .. Echo = '.$text
 							];			
 			
 			// Make a POST Request to Messaging API to reply to sender
