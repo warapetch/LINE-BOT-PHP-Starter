@@ -11,7 +11,7 @@ $datas = json_encode($events);
 
 $userid = $events['events'][0]['source']['userId'];
 $groupid = $events['events'][0]['source']['groupId'];
-$roomid = $events['events'][0]['source']['roomId'];
+$roomid = '';//$events['events'][0]['source']['roomId'];
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
