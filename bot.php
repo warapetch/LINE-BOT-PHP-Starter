@@ -10,8 +10,8 @@ if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		
-		if $event['source'] == 'userId'
-		{$userid = $event['source']['userId'];
+		if $events['events']['source']['userId'] != '' 
+		 {$userid = $events['events']['source']['userId'];
 		}
 		
 		// Reply only when message sent is in 'text' format
