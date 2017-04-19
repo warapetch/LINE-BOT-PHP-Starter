@@ -11,7 +11,7 @@ $events = json_decode($content, true);
 if (!is_null($events['events'][0]['source']['userId'])) then
    $userid = $events['events'][0]['source']['userId']
 else
-$userid = $events['events'][1]['source']['userId']; 
+$userid = $events['events']['source']['userId']; 
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
