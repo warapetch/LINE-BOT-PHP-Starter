@@ -9,8 +9,8 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 $userid = $events['events'][0]['source']['userId'];
-$dataincome = json_encode($events);
-//$userid3 = $events['events'][2]['source']['userId'];
+if $userid == '' then
+   $userid = 'GroupID='.$events['events'][0]['source']['groupId'];
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
@@ -29,7 +29,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => 'ข้อมูลคุณคือ '.$text.' Dynamic Token = '.$replyToken.' Userid = '.$userid.'|'.$dataincome
+				'text' => 'ข้อมูลคุณคือ '.$text.' Dynamic Token = '.$replyToken.' Userid = '.$userid
 					];
 
 			// Make a POST Request to Messaging API to reply to sender
