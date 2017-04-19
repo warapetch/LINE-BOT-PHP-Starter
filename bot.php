@@ -1,5 +1,5 @@
 <?php
-//require 'connection.php';  
+require 'connection.php';  
 
 $access_token = 'E9c+4o7Kfy4N49DvsotR4kI7bZtM6bc8QzZZEcyAarMn0FYEPsIVNVicU7w5BhxcNDelY+ZeMRjk92F8CRniTQXRffGkzhNcP9QVgwUdS9PykBAd1vTSLTfjmL0qmQnucK76cjoDo9e1nX/cbhaxagdB04t89/1O/w1cDnyilFU=';
 
@@ -12,7 +12,7 @@ $datas = json_encode($events);
 if (!is_null($events['events'][0]['source']['userId'])) then
    $userid = $events['events'][0]['source']['userId']
 else
- $userid = 'GroupID='.$events['events'][0]['source']['groupId'];
+ $userid = 'GroupID='.$events['events']['source']['groupId'];
 
 
 // Validate parsed JSON data
