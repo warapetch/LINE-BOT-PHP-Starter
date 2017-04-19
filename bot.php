@@ -9,7 +9,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 $userid = $events['events'][0]['source']['userId'];
-$dataincome = $events;
+$dataincome = json_encode($events);
 //$userid3 = $events['events'][2]['source']['userId'];
 
 // Validate parsed JSON data
