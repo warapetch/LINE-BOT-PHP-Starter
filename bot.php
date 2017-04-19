@@ -8,7 +8,7 @@ $events = json_decode($content, true);
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	
-	$userid = $events['events'][0]['source']['userId'];
+	$userid = $events['events']['source']['userId'];
 	
 	// Loop through each event
 	foreach ($events['events'] as $event) {
