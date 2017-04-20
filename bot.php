@@ -1,5 +1,19 @@
 <?php
 
+function DateThai($strDate)
+{
+$strYear = date("Y",strtotime($strDate))+543;
+$strMonth= date("n",strtotime($strDate));
+$strDay= date("j",strtotime($strDate));
+$strHour= date("H",strtotime($strDate));
+$strMinute= date("i",strtotime($strDate));
+$strSeconds= date("s",strtotime($strDate));
+$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+$strMonthThai=$strMonthCut[$strMonth];
+return "$strDay $strMonthThai $strYear, $strHour:$strMinute";
+}
+
+
 $channel_access_token = 'E9c+4o7Kfy4N49DvsotR4kI7bZtM6bc8QzZZEcyAarMn0FYEPsIVNVicU7w5BhxcNDelY+ZeMRjk92F8CRniTQXRffGkzhNcP9QVgwUdS9PykBAd1vTSLTfjmL0qmQnucK76cjoDo9e1nX/cbhaxagdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -79,17 +93,20 @@ if (!is_null($events['events'])) {
 			if ($text == 'data'){
 			   $messages = [
 				           'type' => 'text',
-							'text' => 'ข้อมูลคุณคือ >> "Reply Token" = '.$replyToken."\n\r".' "Display" = '.$dat_displayname.
+							'text' => 'ข้อมูลคุณคือ >> '."\n\r".'"Reply Token" = '.$replyToken."\n\r".' "Display" = '.$dat_displayname.
 				   			"\n\r".' "UserId" = '.$dat_userid."\n\r".' "Picture URL" ='.$dat_pictureurl."\n\r".' "Status Message" = '.$dat_statusmsg
 							];
 				}
 			else
 			{
 			// CASE AI , SEARCH , INQUERY
+			if ($text = 'สวัสดี') or ($text = 'd') or ($text = 'ไง') {$text = 'สวัสดีครับ' }
+			else
+			if ($text = 'วันนี้') or ($text = 'เวลา') or ($text = 'วัน') {$text = DateThai(now)}
 				
 			$messages = [
 			           'type' => 'text',
-			   	   'text' => 'สวัสดี (พิมพ์คำว่า data เพื่อดูข้อมูล) .. Bot Echo = '.$text
+			   	   'text' => '(พิมพ์คำว่า data เพื่อดูข้อมูล) .. Bot Echo = '.$text
 				];			
 			}
 			
