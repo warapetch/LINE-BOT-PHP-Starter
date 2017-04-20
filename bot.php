@@ -66,6 +66,7 @@ if (!is_null($events['events'])) {
 				curl_close($ch);
 				
 				$raw_text_income  = $result;
+				$result = json_decode($result);
 				$dat_displayname  = $result['displayName'];
 				$dat_userid       = $result['userId'];
 				$dat_pictureurl   = $result['pictureUrl'];
