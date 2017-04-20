@@ -53,7 +53,7 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 			
-			// Get User Profile
+			// Get User Profile Only Message come from User
 			if ($is_type_user) {
 				$url = 'https://api.line.me/v2/bot/profile/'.$userid;
 				$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $channel_access_token);
@@ -79,7 +79,7 @@ if (!is_null($events['events'])) {
 			if ($text == 'data'){
 			   $messages = [
 				           'type' => 'text',
-							'text' => 'ข้อมูลคุณคือ '.$text.' Reply Token = '.$replyToken.' \n\r Display = '.$dat_displayname.'\n\r UserId = '.$dat_userid.'\n\r Picture URL ='.$dat_pictureurl.'\n\r Status = '.$dat_statusmsg
+							'text' => 'ข้อมูลคุณคือ '.$text.' Reply Token = '.$replyToken.' Display = '.$dat_displayname.' UserId = '.$dat_userid.' Picture URL ='.$dat_pictureurl.' Status Message = '.$dat_statusmsg
 							];
 				}
 			else
