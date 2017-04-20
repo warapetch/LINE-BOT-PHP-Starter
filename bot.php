@@ -8,7 +8,14 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 $raw_text_income  = json_encode($events);
-$is_type_user = false;
+
+
+// Initialize
+$is_type_user     = false;
+$dat_displayname  = '';
+$dat_userid       = '';
+$dat_pictureurl   = '';
+$dat_statusmsg    = '';
 
 // Case Message from ...
 if  ($events['events'][0]['source']['type'] == 'user') 
@@ -57,7 +64,13 @@ if (!is_null($events['events'])) {
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 				$result = curl_exec($ch);
 				curl_close($ch);
-				$raw_text_income  = json_encode($result); 
+				
+				$raw_text_income  = $result;
+				$dat_displayname  = $result['displayName'];
+				$dat_userid       = $result['userId'];
+				$dat_pictureurl   = $result['pictureUrl'];
+				$dat_statusmsg    = $result['statusMessage'];
+				
 			}
 			
 			// Build message to reply back
@@ -65,7 +78,7 @@ if (!is_null($events['events'])) {
 			if ($text == 'data'){
 			   $messages = [
 				           'type' => 'text',
-							'text' => 'ข้อมูลคุณคือ '.$text.' Dynamic Token = '.$replyToken.' |'.$usercaption.$userid.'| data='.$raw_text_income
+							'text' => 'ข้อมูลคุณคือ '.$text.' Reply Token = '.$replyToken.' | Display = '.$dat_displayname.'| UserId = '.$dat_userid.'| Picture URL ='.$dat_pictureurl.'| Status = '.$dat_statusmsg
 							];
 				}
 			else
