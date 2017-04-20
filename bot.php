@@ -66,11 +66,11 @@ if (!is_null($events['events'])) {
 				curl_close($ch);
 				
 				$raw_text_income  = $result;
-				$result = json_decode($result);
-				$dat_displayname  = $result['displayName'];
-				$dat_userid       = $result['userId'];
-				$dat_pictureurl   = $result['pictureUrl'];
-				$dat_statusmsg    = $result['statusMessage'];
+				$userprofile      = json_decode($raw_text_income);
+				$dat_displayname  = $userprofile['displayName'];
+				$dat_userid       = $userprofile['userId'];
+				$dat_pictureurl   = $userprofile['pictureUrl'];
+				$dat_statusmsg    = $userprofile['statusMessage'];
 				
 			}
 			
