@@ -79,7 +79,8 @@ if (!is_null($events['events'])) {
 			if ($text == 'data'){
 			   $messages = [
 				           'type' => 'text',
-							'text' => 'ข้อมูลคุณคือ '.$text.' Reply Token = '.$replyToken.' Display = '.$dat_displayname.' UserId = '.$dat_userid.' Picture URL ='.$dat_pictureurl.' Status Message = '.$dat_statusmsg
+							'text' => 'ข้อมูลคุณคือ >> "Reply Token" = '.$replyToken."\n\r".' "Display" = '.$dat_displayname.
+				   			"\n\r".' "UserId" = '.$dat_userid."\n\r".' "Picture URL" ='.$dat_pictureurl."\n\r".' "Status Message" = '.$dat_statusmsg
 							];
 				}
 			else
