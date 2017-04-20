@@ -100,9 +100,9 @@ if (!is_null($events['events'])) {
 			else
 			{
 			// CASE AI , SEARCH , INQUERY
-			if (($text = 'สวัสดี') or ($text = 'd') or ($text = 'ไง')) { $text = 'สวัสดีครับ' ;}
+			if (($text = 'สวัสดี') || ($text = 'd') || ($text = 'ไง')) { $text = 'สวัสดีครับ' ;}
 			else
-			if (($text = 'วันนี้') or ($text = 'เวลา') or ($text = 'วัน')) { $text = DateThai(now); }
+			if (($text = 'วันนี้') || ($text = 'เวลา') || ($text = 'วัน')) { $text = DateThai(now); }
 				
 			$messages = [
 			           'type' => 'text',
