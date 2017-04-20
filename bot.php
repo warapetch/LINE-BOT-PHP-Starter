@@ -30,6 +30,7 @@ $dat_displayname  = '';
 $dat_userid       = '';
 $dat_pictureurl   = '';
 $dat_statusmsg    = '';
+$dat_project      = 'test';
 
 // Case Message from ...
 if  ($events['events'][0]['source']['type'] == 'user') 
@@ -93,14 +94,17 @@ if (!is_null($events['events'])) {
 			if ($text == 'data'){
 			   $messages = [
 				           'type' => 'text',
-							'text' => 'ข้อมูลคุณคือ >> '."\n\r".'"Reply Token" = '.$replyToken."\n\r".' "Display" = '.$dat_displayname.
-				   			"\n\r".' "UserId" = '.$dat_userid."\n\r".' "Picture URL" ='.$dat_pictureurl."\n\r".' "Status Message" = '.$dat_statusmsg
+							'text' => 'ข้อมูลคุณคือ >> '."\n\r".'"Reply Token" = '.$replyToken.
+							"\n\r".' "Display" = '.$dat_displayname.
+				   			"\n\r".' "UserId" = '.$dat_userid.
+							"\n\r".' "Picture URL" ='.$dat_pictureurl.
+							"\n\r".' "Status Message" = '.$dat_statusmsg
 							];
 				}
 			else
 			{
 			// CASE AI , SEARCH , INQUERY
-			if (($text == 'สวัสดี') || ($text == 'd') || ($text == 'ไง')) { $text = 'สวัสดีครับ' ;}
+			if (($text == 'สวัสดี') || (strtolower($text) == 'd') || ($text == 'ไง')) { $text = 'สวัสดีครับ' ;}
 			else
 			if (($text == 'วันนี้') || ($text == 'เวลา') || ($text == 'วัน')) { $text = DateThai(now); }
 				
@@ -134,7 +138,7 @@ if (!is_null($events['events'])) {
  
 // save data url
 $url = 'http://www.plkhealth.go.th/script/updateuser.php';
-$myvars = 'userid=' . $userid . '&token=' . $replyToken;
+$myvars = 'userid=' . $userid . '&display_name=' . $dat_displayname. '&status_message=' . $dat_statusmsg. '&picture_url=' . $dat_pictureurl. '&project=' . $dat_project;
 
 $ch = curl_init( $url );
 curl_setopt( $ch, CURLOPT_POST, 1);
