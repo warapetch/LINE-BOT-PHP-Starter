@@ -138,7 +138,7 @@ if (!is_null($events['events'])) {
  
 // save data url
 $url = 'http://www.plkhealth.go.th/script/updateuser.php';
-$myvars = 'userid=' . $userid . '&display_name=' . $dat_displayname. '&status_message=' . $dat_statusmsg. '&picture_url=' . $dat_pictureurl. '&project=' . $dat_project;
+$myvars = 'userid=' . $userid . '&display_name=' . json_encode($dat_displayname). '&status_message=' . json_encode($dat_statusmsg). '&picture_url=' . $dat_pictureurl. '&project=' . $dat_project;
 
 $ch = curl_init( $url );
 curl_setopt( $ch, CURLOPT_POST, 1);
