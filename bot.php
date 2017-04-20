@@ -66,7 +66,7 @@ if (!is_null($events['events'])) {
 				curl_close($ch);
 				
 				$raw_text_income  = $result;
-				$userprofile      = json_decode($raw_text_income);
+				$userprofile      = json_decode($raw_text_income,true);
 				$dat_displayname  = $userprofile['displayName'];
 				$dat_userid       = $userprofile['userId'];
 				$dat_pictureurl   = $userprofile['pictureUrl'];
