@@ -79,14 +79,18 @@ if (!is_null($events['events'])) {
 			if ($text == 'data'){
 			   $messages = [
 				           'type' => 'text',
-							'text' => 'ข้อมูลคุณคือ '.$text.' Reply Token = '.$replyToken.' | Display = '.$dat_displayname.'| UserId = '.$dat_userid.'| Picture URL ='.$dat_pictureurl.'| Status = '.$dat_statusmsg
+							'text' => 'ข้อมูลคุณคือ '.$text.' Reply Token = '.$replyToken.' \n\r Display = '.$dat_displayname.'\n\r UserId = '.$dat_userid.'\n\r Picture URL ='.$dat_pictureurl.'\n\r Status = '.$dat_statusmsg
 							];
 				}
 			else
+			{
+			// CASE AI , SEARCH , INQUERY
+				
 			$messages = [
-				           'type' => 'text',
-							'text' => 'สวัสดี (พิมพ์คำว่า data เพื่อดูข้อมูล) .. Bot Echo = '.$text.'|'.$raw_text_income
-							];			
+			           'type' => 'text',
+			   	   'text' => 'สวัสดี (พิมพ์คำว่า data เพื่อดูข้อมูล) .. Bot Echo = '.$text
+				];			
+			}
 			
 			//---------------------------------------------------------------------------------------------------------------------
 			// Make a POST Request to Messaging API to reply to sender
