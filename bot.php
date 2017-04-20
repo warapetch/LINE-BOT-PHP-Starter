@@ -1,5 +1,4 @@
 <?php
-//require 'connection.php';  
 
 $access_token = 'E9c+4o7Kfy4N49DvsotR4kI7bZtM6bc8QzZZEcyAarMn0FYEPsIVNVicU7w5BhxcNDelY+ZeMRjk92F8CRniTQXRffGkzhNcP9QVgwUdS9PykBAd1vTSLTfjmL0qmQnucK76cjoDo9e1nX/cbhaxagdB04t89/1O/w1cDnyilFU=';
 
@@ -52,7 +51,7 @@ if (!is_null($events['events'])) {
 			else
 			$messages = [
 				           'type' => 'text',
-							'text' => 'สวัสดี BOT (พิมพ์คำว่า data เพื่อดูข้อมูล) .. Echo = '.$text
+							'text' => 'สวัสดี (พิมพ์คำว่า data เพื่อดูข้อมูล) .. Bot Echo = '.$text
 							];			
 			
 			// Make a POST Request to Messaging API to reply to sender
@@ -72,16 +71,23 @@ if (!is_null($events['events'])) {
 			$result = curl_exec($ch);
 			curl_close($ch);
 			echo $result . "\r\n";
- // บันทึกลงฐาน
-  $sql = "insert ignore into lineuser(userid,linetoken) values ('$userid','$replyToken')";
-    
-  if ( mysql_query($sql)){ 
-	  }else { 
-	   echo "error message : ".mysql_error();
-      } 
-// 
 		}
 	}
+ 
+// save data url
+$url = 'http://www.plkhealth.go.th/script/updateuser.php';
+$myvars = 'userid=' . $userid . '&token=' . $replyToken;
+
+$ch = curl_init( $url );
+curl_setopt( $ch, CURLOPT_POST, 1);
+curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt( $ch, CURLOPT_HEADER, 0);
+curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+
+$response = curl_exec( $ch );
+	
 }
+	
 echo "OK : token = ".$replyToken.' userid = '.$userid;
 ?>
