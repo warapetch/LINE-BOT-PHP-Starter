@@ -141,13 +141,6 @@ if (!is_null($events['events'])) {
 // save data url
 //$url = 'http://www.plkhealth.go.th/script/updateuser.php';
 $url = 'http://103.253.75.184/updateuser.php';
-//$dat_displayname = str_replace('\u','_',$dat_displayname);
-//$dat_displayname = str_replace('\U','_',$dat_displayname);
-$dat_displayname = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/', 
-        function ($match) {
-    	return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
-	}, 
-        $dat_displayname);
 	
 $myvars = 'userid=' . $userid . 
 	  '&display_name="'.$dat_displayname.'"'.
