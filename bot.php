@@ -148,7 +148,7 @@ $dat_project_group_user	  = 'all';
 			  '&picture_url='. $dat_pictureurl. 
 			  '&project='.$dat_project_code.
 			  '&group_user='.$dat_project_group_user.
-			  '&rawtext='.$raw_text_income
+			  '&rawtext='.$userprofile
 			  ;
 			  
 		$ch = curl_init( $url );
