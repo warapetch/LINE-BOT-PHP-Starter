@@ -1,5 +1,5 @@
 <?php
-// last update : 60-04-21 15.30 //
+// last update : 60-04-21 19.30 //
 	
 function DateThai($strDate)
 {
