@@ -141,7 +141,7 @@ if (!is_null($events['events'])) {
 // save data url
 //$url = 'http://www.plkhealth.go.th/script/updateuser.php';
 $url = 'http://103.253.75.184/updateuser.php';
-$dat_displayname = quoted_printable_decode($dat_displayname);
+//$dat_displayname = quoted_printable_decode($dat_displayname);
 //$dat_statusmsg   = html_entity_decode(preg_replace("/U\+([0-9A-F]{4,5})/", "&#x\\1;", $dat_statusmsg), ENT_COMPAT | ENT_HTML401, 'UTF-8');	
 $myvars = 'userid=' . $userid . 
 	  '&display_name='.$dat_displayname.
