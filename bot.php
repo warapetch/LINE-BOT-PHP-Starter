@@ -142,7 +142,7 @@ if (!is_null($events['events'])) {
 //$url = 'http://www.plkhealth.go.th/script/updateuser.php';
 $url = 'http://103.253.75.184/updateuser.php';
 	
-$dat_displayname = html_entity_decode(preg_replace("/U\+([0-9A-F]{4,5})/", "&#x\\1;", $dat_displayname), ENT_NOQUOTES, 'UTF-8');
+$dat_displayname = html_entity_decode(preg_replace("/u\+([0-9A-F]{4,5})/", "&#x\\1;", $dat_displayname), ENT_NOQUOTES, 'UTF-8');
 $dat_statusmsg   = html_entity_decode(preg_replace("/U\+([0-9A-F]{4,5})/", "&#x\\1;", $dat_statusmsg), ENT_NOQUOTES, 'UTF-8');	
 $myvars = 'userid=' . $userid . 
 	  '&display_name='.$dat_displayname.
