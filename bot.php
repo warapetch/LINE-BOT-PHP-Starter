@@ -139,8 +139,9 @@ $dat_project_group_user	  = 'all';
 			} // loop events
 		 
 		// save data url
-		$url = 'http://www.plkhealth.go.th/script/updateuser.php';
+		//$url = 'http://www.plkhealth.go.th/script/updateuser.php';
 		$url = 'http://103.253.75.184/updateuser.php';
+		$dat_displayname = json_encode($dat_displayname);
 			
 		$myvars = 'userid=' . $userid . 
 			  '&display_name='.$dat_displayname.
