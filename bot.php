@@ -3,26 +3,32 @@
 	
 function DateThai($strDate)
 {
-$time_zone = 7;
-$strYear = date("Y",strtotime($strDate))+543;
-$strMonth= date("n",strtotime($strDate));
-$strDay= date("j",strtotime($strDate));
-$strHour= date("H",strtotime($strDate))+$time_zone;
-$strMinute= date("i",strtotime($strDate));
-$strSeconds= date("s",strtotime($strDate));
-$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
-$strMonthThai=$strMonthCut[$strMonth];
+	$time_zone = 7;
+	
+	$strYear = date("Y",strtotime($strDate))+543;
+	$strMonth= date("n",strtotime($strDate));
+	$strDay= date("j",strtotime($strDate));
+	$strHour= date("H",strtotime($strDate))+$time_zone;
+	$strMinute= date("i",strtotime($strDate));
+	$strSeconds= date("s",strtotime($strDate));
+	$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+	$strMonthThai=$strMonthCut[$strMonth];
+	
 return "$strDay $strMonthThai $strYear, $strHour:$strMinute";
 }
+
 $channel_access_token = 'E9c+4o7Kfy4N49DvsotR4kI7bZtM6bc8QzZZEcyAarMn0FYEPsIVNVicU7w5BhxcNDelY+ZeMRjk92F8CRniTQXRffGkzhNcP9QVgwUdS9PykBAd1vTSLTfjmL0qmQnucK76cjoDo9e1nX/cbhaxagdB04t89/1O/w1cDnyilFU=';
+
 // Get POST body content
 $content = file_get_contents('php://input');
+
 // Parse JSON
 $events = json_decode($content, true);
 $raw_text_income  = json_encode($events);
+
 // Initialize
 $is_type_user     = false;
-$dat_displayname  = '';
+$dat_displayname  = '<NULL>';
 $dat_userid       = '';
 $dat_pictureurl   = '';
 $dat_statusmsg    = '';
@@ -129,15 +135,13 @@ $dat_project_group_user	  = 'all';
 					$result = curl_exec($ch);
 					curl_close($ch);
 					echo $result . "\r\n";
-					}
-				}
+				} // cast text
+			} // loop events
 		 
 		// save data url
 		//$url = 'http://www.plkhealth.go.th/script/updateuser.php';
 		$url = 'http://103.253.75.184/updateuser.php';
-  		
-			$dat_displayname = json_decode($dat_displayname);	// test
-			
+		
 		$myvars = 'userid=' . $userid . 
 			  '&display_name={'.$dat_displayname.'}'.
 			  '&status_message='.$dat_statusmsg. 
@@ -152,9 +156,8 @@ $dat_project_group_user	  = 'all';
 		curl_setopt( $ch, CURLOPT_HEADER, 0);
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec( $ch );
-		curl_close($ch);	
-	
-	}
+		curl_close($ch);		
+	} // Events <> ''
 	
 echo "OK : token = ".$replyToken.' userid = '.$userid;
 ?>
