@@ -136,10 +136,8 @@ $dat_project_group_user	  = 'all';
 		//$url = 'http://www.plkhealth.go.th/script/updateuser.php';
 		$url = 'http://103.253.75.184/updateuser.php';
 	
-			$dat_displayname = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/', function ($match) {
-    	return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UTF-16BE');
-	}, $dat_displayname);
-			
+		$dat_displayname = json_decode($dat_displayname);
+    			
 		$myvars = 'userid=' . $userid . 
 			  '&display_name={'.$dat_displayname.'}'.
 			  '&status_message='.$dat_statusmsg. 
