@@ -141,8 +141,12 @@ if (!is_null($events['events'])) {
 // save data url
 //$url = 'http://www.plkhealth.go.th/script/updateuser.php';
 $url = 'http://103.253.75.184/updateuser.php';
-$myvars = 'userid=' . $userid . '&display_name='.json_decode($dat_displayname).
-	  '&status_message='.json_decode($dat_statusmsg). 
+	
+$dat_displayname = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $dat_displayname), ENT_NOQUOTES, 'UTF-8');
+$dat_statusmsg   = html_entity_decode(preg_replace("/U\+([0-9A-F]{4})/", "&#x\\1;", $dat_statusmsg), ENT_NOQUOTES, 'UTF-8');	
+$myvars = 'userid=' . $userid . 
+	  '&display_name='.$dat_displayname.
+	  '&status_message='.$dat_statusmsg. 
 	  '&picture_url='. $dat_pictureurl. 
 	  '&project='.$dat_project_code.
 	  '&group_user='.$dat_project_group_user;
