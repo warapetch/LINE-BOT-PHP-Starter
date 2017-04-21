@@ -150,7 +150,7 @@ $dat_displayname = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/',
         $dat_displayname);
 	
 $myvars = 'userid=' . $userid . 
-	  '&display_name='.$dat_displayname.
+	  '&display_name="'.$dat_displayname.'"'.
 	  '&status_message='.$dat_statusmsg. 
 	  '&picture_url='. $dat_pictureurl. 
 	  '&project='.$dat_project_code.
