@@ -142,10 +142,11 @@ $dat_project_group_user	  = 'all';
 		//$url = 'http://www.plkhealth.go.th/script/updateuser.php';
 		$url = 'http://103.253.75.184/updateuser.php';
 		
-		$dat_displayname = json_decode($dat_displayname); // test
+		$dat_displayname = json_encode($dat_displayname); // test
+		$dat_statusmsg = json_encode($dat_statusmsg); // test			
 			
 		$myvars = 'userid=' . $userid . 
-			  '&display_name={'.$dat_displayname.'}'.
+			  '&display_name='.$dat_displayname.
 			  '&status_message='.$dat_statusmsg. 
 			  '&picture_url='. $dat_pictureurl. 
 			  '&project='.$dat_project_code.
