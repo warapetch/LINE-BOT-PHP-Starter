@@ -15,6 +15,9 @@ $strMonthThai=$strMonthCut[$strMonth];
 return "$strDay $strMonthThai $strYear, $strHour:$strMinute";
 }
 
+function encodeToUtf8($string) {
+     return mb_convert_encoding($string, "UTF-8", mb_detect_encoding($string, "UTF-8, ISO-8859-1, ISO-8859-15", true));
+}
 
 $channel_access_token = 'E9c+4o7Kfy4N49DvsotR4kI7bZtM6bc8QzZZEcyAarMn0FYEPsIVNVicU7w5BhxcNDelY+ZeMRjk92F8CRniTQXRffGkzhNcP9QVgwUdS9PykBAd1vTSLTfjmL0qmQnucK76cjoDo9e1nX/cbhaxagdB04t89/1O/w1cDnyilFU=';
 
@@ -142,7 +145,7 @@ if (!is_null($events['events'])) {
 // save data url
 //$url = 'http://www.plkhealth.go.th/script/updateuser.php';
 $url = 'http://103.253.75.184/updateuser.php';
-$myvars = 'userid=' . $userid . '&display_name=' . $dat_displayname. '&status_message=' . $dat_statusmsg. '&picture_url=' . $dat_pictureurl. '&project=' . $dat_project_code.'&group_user='.$dat_project_group_user;
+$myvars = 'userid=' . $userid . '&display_name=' . encodeToUtf8($dat_displayname). '&status_message=' . encodeToUtf8($dat_statusmsg). '&picture_url=' . $dat_pictureurl. '&project=' . $dat_project_code.'&group_user='.$dat_project_group_user;
 
 $ch = curl_init( $url );
 curl_setopt( $ch, CURLOPT_POST, 1);
