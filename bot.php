@@ -1,11 +1,13 @@
 <?php
-
+-- last update : 60-04-21 15.30
+	
 function DateThai($strDate)
 {
+$time_zone = 7;
 $strYear = date("Y",strtotime($strDate))+543;
 $strMonth= date("n",strtotime($strDate));
 $strDay= date("j",strtotime($strDate));
-$strHour= date("H",strtotime($strDate));
+$strHour= date("H",strtotime($strDate))+$time_zone;
 $strMinute= date("i",strtotime($strDate));
 $strSeconds= date("s",strtotime($strDate));
 $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
@@ -30,7 +32,8 @@ $dat_displayname  = '';
 $dat_userid       = '';
 $dat_pictureurl   = '';
 $dat_statusmsg    = '';
-$dat_project      = 'test';
+$dat_project_code		  = 'project1';
+$dat_project_group_user	  = 'all';
 
 // Case Message from ...
 if  ($events['events'][0]['source']['type'] == 'user') 
@@ -104,7 +107,7 @@ if (!is_null($events['events'])) {
 			else
 			{
 			// CASE AI , SEARCH , INQUERY
-			if (($text == 'สวัสดี') || (strtolower($text) == 'd') || ($text == 'ไง')) { $text = 'สวัสดีครับ' ;}
+			if (($text == 'สวัสดี') || ($text == 'd') || ($text == 'ไง')) { $text = 'สวัสดีครับ' ;}
 			else
 			if (($text == 'วันนี้') || ($text == 'เวลา') || ($text == 'วัน')) { $text = DateThai(now); }
 				
@@ -138,7 +141,7 @@ if (!is_null($events['events'])) {
  
 // save data url
 $url = 'http://www.plkhealth.go.th/script/updateuser.php';
-$myvars = 'userid=' . $userid . '&display_name=' . json_encode($dat_displayname). '&status_message=' . json_encode($dat_statusmsg). '&picture_url=' . $dat_pictureurl. '&project=' . $dat_project;
+$myvars = 'userid=' . $userid . '&display_name=' . $dat_displayname. '&status_message=' . $dat_statusmsg. '&picture_url=' . $dat_pictureurl. '&project=' . $dat_project_code.'&group_user='.$dat_project_group_user;
 
 $ch = curl_init( $url );
 curl_setopt( $ch, CURLOPT_POST, 1);
