@@ -139,7 +139,7 @@ $dat_project_group_user	  = 'all';
 			} // loop events
 		 
 		// save data url
-		//$url = 'http://www.plkhealth.go.th/script/updateuser.php';
+		$url = 'http://www.plkhealth.go.th/script/updateuser.php';
 		$url = 'http://103.253.75.184/updateuser.php';
 			
 		$myvars = 'userid=' . $userid . 
@@ -147,15 +147,16 @@ $dat_project_group_user	  = 'all';
 			  '&status_message='.$dat_statusmsg. 
 			  '&picture_url='. $dat_pictureurl. 
 			  '&project='.$dat_project_code.
-			  '&group_user='.$dat_project_group_user.
-			  '&rawtext='.$userprofile
+			  '&group_user='.$dat_project_group_user			  
 			  ;
 			  
+		$headers = array('Content-Type: application/x-www-form-urlencoded','charset : UTF-8');
+			
 		$ch = curl_init( $url );
 		curl_setopt( $ch, CURLOPT_POST, 1);
 		curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
 		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
-		curl_setopt( $ch, CURLOPT_HEADER, 0);
+		curl_setopt( $ch, CURLOPT_HEADER, $headers);
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec( $ch );
 		curl_close($ch);		
