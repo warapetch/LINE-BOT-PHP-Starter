@@ -17,8 +17,8 @@ function DateThai($strDate)
 return "$strDay $strMonthThai $strYear, $strHour:$strMinute";
 }
 
-
 $channel_access_token = 'E9c+4o7Kfy4N49DvsotR4kI7bZtM6bc8QzZZEcyAarMn0FYEPsIVNVicU7w5BhxcNDelY+ZeMRjk92F8CRniTQXRffGkzhNcP9QVgwUdS9PykBAd1vTSLTfjmL0qmQnucK76cjoDo9e1nX/cbhaxagdB04t89/1O/w1cDnyilFU=';
+// < YOUR CHANNEL_ACCESS_TOKEN >
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -72,7 +72,8 @@ $dat_project_group_user	  = 'all';
 					
 					
 					// Get User Profile Only Message come from User
-					if ($is_type_user) {
+					if ($is_type_user) 
+					 {
 						$url = 'https://api.line.me/v2/bot/profile/'.$userid;
 						$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $channel_access_token);
 						$ch = curl_init($url);
@@ -107,14 +108,14 @@ $dat_project_group_user	  = 'all';
 					else
 					{
 					// CASE AI , SEARCH , INQUERY
-					if (($text == 'สวัสดี') || ($text == 'd') || ($text == 'ไง')) { $text = 'สวัสดีครับ' ;}
+					if (($text == 'สวัสดี') || (strtolower($text) == 'd') || ($text == 'ไง')) { $text = 'สวัสดีครับ' ;}
 					else
 					if (($text == 'วันนี้') || ($text == 'เวลา') || ($text == 'วัน')) { $text = DateThai(now); }
 						
 					$messages = [
-							   'type' => 'text',
-						   'text' => '(พิมพ์คำว่า data เพื่อดูข้อมูล) .. Bot Echo = '.$text
-						];			
+							'type' => 'text',
+						        'text' => '(พิมพ์คำว่า data เพื่อดูข้อมูล) '."\n\r".'Echo = '.$text
+						    ];			
 					}
 					
 					//---------------------------------------------------------------------------------------------------------------------
@@ -123,7 +124,7 @@ $dat_project_group_user	  = 'all';
 					$data = [
 						'replyToken' => $replyToken,
 						'messages' => [$messages],
-					];
+					         ];
 					
 					$post = json_encode($data);
 					$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $channel_access_token);
@@ -140,8 +141,7 @@ $dat_project_group_user	  = 'all';
 			} // loop events
 		 
 		// save data url
-		//$url = 'http://www.plkhealth.go.th/script/updateuser.php';
-		$url = 'http://103.253.75.184/updateuser.php';
+		$url = 'http://103.253.75.184/updateuser.php'; // <Your Server / update_user_data.php >
 					
 		$myvars = 'userid=' . $userid . 
 			  '&display_name='.$dat_displayname.
