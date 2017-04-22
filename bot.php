@@ -150,7 +150,7 @@ $dat_project_group_user	  = 'all';
 			  '&project='.$dat_project_code.
 			  '&group_user='.$dat_project_group_user			  
 			  ;
-		$myvars = urlencode($myvars);	
+		//$myvars = urlencode($myvars);	
 		//$headers = array('Content-Type: text/html','charset : UTF-8');
 			
 		$ch = curl_init( $url );
