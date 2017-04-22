@@ -155,7 +155,7 @@ $dat_project_group_user	  = 'all';
 			
 		$ch = curl_init( $url );
 		curl_setopt( $ch, CURLOPT_POST, 1);
-		curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, urlencode($myvars));
 		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt( $ch, CURLOPT_HEADER, $headers);
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
