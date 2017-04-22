@@ -151,13 +151,13 @@ $dat_project_group_user	  = 'all';
 			  '&group_user='.$dat_project_group_user			  
 			  ;
 			  
-		$headers = array('Content-Type: text/html','charset : UTF-8');
+		//$headers = array('Content-Type: text/html','charset : UTF-8');
 			
 		$ch = curl_init( $url );
 		curl_setopt( $ch, CURLOPT_POST, 1);
-		curl_setopt( $ch, CURLOPT_POSTFIELDS, urlencode($myvars));
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars);
 		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
-		curl_setopt( $ch, CURLOPT_HEADER, $headers);
+		curl_setopt( $ch, CURLOPT_HEADER, 0);
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec( $ch );
 		curl_close($ch);		
