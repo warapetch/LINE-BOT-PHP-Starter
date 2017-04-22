@@ -151,7 +151,7 @@ $dat_project_group_user	  = 'all';
 			  '&group_user='.$dat_project_group_user			  
 			  ;
 			  
-		$headers = array('Content-Type: application/x-www-form-urlencoded','charset : UTF-8');
+		$headers = array('Content-Type: text/html','charset : UTF-8');
 			
 		$ch = curl_init( $url );
 		curl_setopt( $ch, CURLOPT_POST, 1);
