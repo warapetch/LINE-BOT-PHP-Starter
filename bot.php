@@ -144,13 +144,13 @@ $dat_project_group_user	  = 'all';
 		$url = 'http://103.253.75.184/updateuser.php';
 					
 		$myvars = 'userid=' . $userid . 
-			  '&display_name='.$dat_displayname.
-			  '&status_message='.$dat_statusmsg. 
+			  '&display_name='.urlencode($dat_displayname).
+			  '&status_message='.urlencode($dat_statusmsg). 
 			  '&picture_url='. $dat_pictureurl. 
 			  '&project='.$dat_project_code.
 			  '&group_user='.$dat_project_group_user			  
 			  ;
-		$myvars = urlencode($myvars);	
+		//$myvars = urlencode($myvars);	
 		//$headers = array('Content-Type: text/html','charset : UTF-8');
 			
 		$ch = curl_init( $url );
