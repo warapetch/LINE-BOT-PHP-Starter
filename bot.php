@@ -159,7 +159,7 @@ $dat_project_group_user	  = 'all';
 		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt( $ch, CURLOPT_HEADER, 0);
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8'); //add
+		//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8'); 
 		$response = curl_exec( $ch );
 		curl_close($ch);		
 	} // Events <> ''
