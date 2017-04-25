@@ -6,12 +6,12 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $response = json_decode($content, true);
 
-$code = $response['code'];
-$redirect_uri = $response['redirect_uri'];
+//$code = $response['code'];
+//$redirect_uri = $response['redirect_uri'];
 $client_id = 'TSsCKpdeq6LyZtwzgZjVdF';
 $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
 					
-					
+/*					
 					
 					//---------------------------------------------------------------------------------------------------------------------
 					// Make a POST Request to Messaging API to reply to sender
@@ -35,7 +35,7 @@ $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
 					curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 					$result = curl_exec($ch);
 					curl_close($ch);
-		 
+	*/	 
 		// save data url
 		$url = 'http://103.253.75.184/post_callback.php';
 				
