@@ -15,7 +15,7 @@ $data = [
 			   ];
 					
         $post = json_encode($data);
-		$headers = 'content-type: application/x-www-form-urlencoded';
+		$headers = ['content-type: application/x-www-form-urlencoded'];
 		$ch = curl_init($url);
 		curl_setopt($ch, curlopt_customrequest, "post");
 		curl_setopt($ch, curlopt_returntransfer, true);
