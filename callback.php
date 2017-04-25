@@ -3,14 +3,19 @@
 
 $client_id = 'TSsCKpdeq6LyZtwzgZjVdF';
 $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
-$session_id = session_id ();
+//$session_id = session_id();
 $redirect_uri = 'https://fitness-thai.herokuapp.com/callback.php';
 
-$code =  $POST['code'];
-$state =  $POST['state'];
+$content = file_get_contents('php://input');
+$data = json_decode($content, true);
 
+echo 'income='.$data."\n\r";
+$code =   $data['code'];
+$state =  $data['state'];
+echo 'code='.$code."\n\r";
+echo 'state='.$state."\n\r";
 					
-					$url = 'https://notify-bot.line.me/oauth/token';
+	/*				$url = 'https://notify-bot.line.me/oauth/token';
 
 					$data = [
 						'grant_type' => ['authorization_code'],
@@ -44,7 +49,7 @@ $state =  $POST['state'];
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec( $ch );
 		curl_close($ch);		
-	
+	*/
 	
 echo 'OK ,content ='.$result.', reponse = '.$response;
 ?>
