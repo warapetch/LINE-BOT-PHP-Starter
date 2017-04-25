@@ -51,5 +51,5 @@ $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
 		curl_close($ch);		
 	
 	
-echo 'OK ,content ='.$content.', reponse = '.$response.;
+echo 'OK ,content ='.$content.', reponse = '.$response;
 ?>
