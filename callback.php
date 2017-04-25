@@ -1,20 +1,15 @@
 <?php
 // last update : 60-04-22 12.40 //
 
-$content = file_get_contents('php://input');
-
-// Parse JSON
-//$response = json_decode($content, true);
-
-//$code = $response['code'];
-//$redirect_uri = $response['redirect_uri'];
 $client_id = 'TSsCKpdeq6LyZtwzgZjVdF';
 $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
+$session_id = session_id ();
+$redirect_uri = 'https://fitness-thai.herokuapp.com/callback.php';
+
+$code =  $POST['code'];
+$state =  $POST['state'];
+
 					
-/*					
-					
-					//---------------------------------------------------------------------------------------------------------------------
-					// Make a POST Request to Messaging API to reply to sender
 					$url = 'https://notify-bot.line.me/oauth/token';
 
 					$data = [
@@ -35,11 +30,11 @@ $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
 					curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 					$result = curl_exec($ch);
 					curl_close($ch);
-	*/	 
+	
 		// save data url
 		$url = 'http://103.253.75.184/post_callback.php';
 				
-		$myvars = 'rawdata=' . $content ;
+		$myvars = 'code='.$code.'&state='.$state ;
 		
 		$ch = curl_init( $url );
 		curl_setopt( $ch, CURLOPT_POST, 1);
@@ -51,5 +46,5 @@ $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
 		curl_close($ch);		
 	
 	
-echo 'OK ,content ='.$content.', reponse = '.$response;
+echo 'OK ,content ='.$result.', reponse = '.$response;
 ?>
