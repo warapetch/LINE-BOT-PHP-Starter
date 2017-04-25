@@ -6,20 +6,15 @@ $code  = $_GET['code'];
 $state = $_GET['state'];
 
 $url = 'https://notify-bot.line.me/oauth/token';
-$data = [
-            'grant_type' => 'authorization_code',
-			'code' => $code,
-			'redirect_uri' => $redirect_uri,
-			'client_id' => $client_id ,
-			'client_secret' => $client_secret 
-			   ];
+$data = 'grant_type=authorization_code&code='.$code.'&redirect_uri='.$redirect_uri.'&client_id='.$client_id.'&client_secret='.$client_secret;
+			   
 					
-        $post = json_encode($data);
+        //$post = json_encode($data);
 		$headers = ['content-type: application/x-www-form-urlencoded'];
 		$ch = curl_init($url);
 		curl_setopt($ch, curlopt_customrequest, "post");
 		curl_setopt($ch, curlopt_returntransfer, true);
-		curl_setopt($ch, curlopt_postfields, $post);
+		curl_setopt($ch, curlopt_postfields, $data);
 		curl_setopt($ch, curlopt_httpheader, $headers);
 		curl_setopt($ch, curlopt_followlocation, 1);
 		$result = curl_exec($ch);
