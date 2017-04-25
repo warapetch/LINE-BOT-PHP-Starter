@@ -1,31 +1,55 @@
 <?php
-include __DIR__ . "/settings.php";
-include __DIR__ . "/LineNotifySimpleLib.php";
-$line_notify = new LineNotifySimpleLib(LINE_NOTIFY_CLIENT_ID, LINE_NOTIFY_CLIENT_SECRET, CALLBACK_URL);
-$access_token = $line_notify->requestAccessToken($_GET);
-?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
+// last update : 60-04-22 12.40 //
 
-<?php
-if ($access_token === false) {
-    echo "<h1>認証失敗</h1>";
-    echo "<p>以下はデバッグ情報です（通常表示する必要はありません）</p>";
-    echo "<textarea style='width:100%; height:500px'>";
-    echo htmlspecialchars(print_r($line_notify->getLastError(), 1), ENT_QUOTES);
-    echo "</textarea>";
-} else {
-    echo "<h1>認証成功</h1>";
-    echo "<p>access_token <input type='text' style='width:400px' value='" . htmlspecialchars($access_token, ENT_QUOTES) . "'></p>";
-    echo "<p>※上記access_tokenをコピペして送信してください</p>";
-}
-?>
+$content = file_get_contents('php://input');
 
-<p><a href="/">トップに戻る</a></p>
-</body>
-</html>
+// Parse JSON
+$response = json_decode($content, true);
+
+$code = $response['code'];
+$redirect_uri = $response['redirect_uri'];
+$client_id = 'TSsCKpdeq6LyZtwzgZjVdF';
+$client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
+					
+					
+					
+					//---------------------------------------------------------------------------------------------------------------------
+					// Make a POST Request to Messaging API to reply to sender
+					$url = 'https://notify-bot.line.me/oauth/token';
+
+					$data = [
+						'grant_type' => ['authorization_code'],
+						'code' => [$code],
+						'redirect_uri' => [$redirect_uri],
+						'client_id' => [$client_id] ,
+						'client_secret' => [$client_secret] 
+					         ];
+					
+					$post = json_encode($data);
+					$headers = 'Content-Type: application/x-www-form-urlencoded';
+					$ch = curl_init($url);
+					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+					curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+					$result = curl_exec($ch);
+					curl_close($ch);
+		 
+		// save data url
+		$url = 'http://103.253.75.184/post_callback.php';
+				
+		$myvars = 'rawdata=' . $content ;
+		
+		$ch = curl_init( $url );
+		curl_setopt( $ch, CURLOPT_POST, 1);
+		curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars );
+		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt( $ch, CURLOPT_HEADER, 0);
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+		$response = curl_exec( $ch );
+		curl_close($ch);		
+	
+	
+echo "OK";
+?>
