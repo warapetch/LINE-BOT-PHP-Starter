@@ -1,7 +1,7 @@
 <?php
 $client_id = 'TSsCKpdeq6LyZtwzgZjVdF';
 $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
-$redirect_uri = 'https://fitness-thai.herokuapp.com/show_token.php';
+$redirect_uri = 'https: //notify-bot.line.me/oauth/authorize';
 $code  = $_GET['code'];
 $state = $_GET['state'];
 
