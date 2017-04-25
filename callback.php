@@ -39,7 +39,7 @@ $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
 		// save data url
 		$url = 'http://103.253.75.184/post_callback.php';
 				
-		$myvars = 'rawdata=' . $content ;
+		$myvars = 'rawdata=' . $response ;
 		
 		$ch = curl_init( $url );
 		curl_setopt( $ch, CURLOPT_POST, 1);
@@ -51,5 +51,5 @@ $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
 		curl_close($ch);		
 	
 	
-echo "OK";
+echo "OK , reponse = ".$response.;
 ?>
