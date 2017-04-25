@@ -42,5 +42,4 @@ $data = [
 		curl_close($ch);		
 	*/
 	
-//echo 'OK ,content ='.$result.', reponse = '.$data;
 ?>
