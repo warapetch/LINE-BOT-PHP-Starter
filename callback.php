@@ -55,8 +55,8 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 		curl_close($ch);		
 	}
 	//echo "OK passed 1+2"."\n\r";
-	
-    	header("Location: success.php?<?php echo $result_['access_token'] ?> ");
+	$myvars = 'state='.$_GET["state"].'&access_token='.$result_['access_token'];
+    	header("Location: success.php?".http_build_query($myvar));
 
 }
 //echo "end process"."\n\r";
