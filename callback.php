@@ -17,8 +17,8 @@ $data = 'grant_type=authorization_code&code='.$code.
 
 		$headers = 'content-type: application/x-www-form-urlencoded';
 		$ch = curl_init($url);
-		//curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		//curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);				
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);	
