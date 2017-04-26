@@ -12,7 +12,7 @@ $data = 'grant_type=authorization_code&code='.$code.'&redirect_uri='.$redirect_u
         $post = json_encode($data);
 		$headers = ['content-type: application/x-www-form-urlencoded'];
 		$ch = curl_init($url);
-		curl_setopt($ch, curlopt_customrequest, "post");
+		curl_setopt($ch, curlopt_customrequest, "POST");
 		curl_setopt($ch, curlopt_returntransfer, true);
 		curl_setopt($ch, curlopt_postfields, $post);
 		curl_setopt($ch, curlopt_httpheader, $headers);
