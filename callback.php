@@ -56,7 +56,7 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 	}
 	//echo "OK passed 1+2"."\n\r";
 	$myvars = 'state='.$_GET["state"].'&access_token='.$result_['access_token'];
-    	header("Location: success.php?".http_build_query($myvars));
+    	header("Location: success.php?".$myvars);
 
 }
 //echo "end process"."\n\r";
