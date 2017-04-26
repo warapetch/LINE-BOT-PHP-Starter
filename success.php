@@ -26,7 +26,19 @@ $token = $_GET['access_token'];
     <p style="text-align: center;">&nbsp;</p>
     <p style="text-align: center;">&nbsp;</p>
   <div>
-     <div align="center"><a href="#" onclick="close_window();return false;">  ปิดหน้าต่าง (Close)</a>   </div>
+		
+	<form action="" method="get">
+	  <div align="center">
+	    <script>
+		function close_window() {
+  			if (confirm("Close Window?")) {
+    			close();
+  				}
+		}
+			</script>
+	      <a href="#" onclick="close_window();return false;"> >> ปิดหน้าต่าง << </a>
+        </div>
+	</form>
   </div>
 
 
