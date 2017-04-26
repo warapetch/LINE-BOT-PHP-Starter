@@ -28,7 +28,7 @@ $data = 'grant_type=authorization_code&code='.$code.
 		// save data url
 		$url = 'http://103.253.75.184/post_callback.php';
 				
-		$myvars = 'rawdata='.$post.'&response='.$result ;
+		$myvars = 'response='.$result.'&rawdata='.$post ;
 		
 		$ch = curl_init( $url );
 		curl_setopt( $ch, CURLOPT_POST, 1);
