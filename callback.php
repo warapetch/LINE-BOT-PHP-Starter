@@ -12,7 +12,7 @@ $data = 'grant_type=authorization_code&code='.$code.
 	'&client_secret='.$client_secret;
 			   
 					
-        $post = json_encode($data);
+        $post = urlencode($data);
         //$post = $data;
 
 		$headers = 'content-type: application/x-www-form-urlencoded';
