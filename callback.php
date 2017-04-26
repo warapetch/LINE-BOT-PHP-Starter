@@ -55,9 +55,9 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 		curl_close($ch);		
 	}
 	//echo "OK passed 1+2"."\n\r";
-	<?php
-    		header("Location: success.php");
-	?>
+	
+    	header("Location: success.php");
+
 }
 //echo "end process"."\n\r";
 ?>
