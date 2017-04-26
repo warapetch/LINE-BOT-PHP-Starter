@@ -5,7 +5,7 @@ $client_id = 'TSsCKpdeq6LyZtwzgZjVdF';
 $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
 $redirect_uri = 'https://fitness-thai.herokuapp.com/callback.php';
 
-echo "Enter process\n";
+echo "Enter process ...#1"."\n\r";
 if (isset($_GET["code"])&&isset($_GET["state"]))
    {
 	$postdata = 'grant_type=authorization_code';
@@ -28,14 +28,15 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 	curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
 	$result = curl_exec( $chOne ); 
         
-	echo "post get token\n";
+	$result_ = json_decode($result, true); 
+	echo "post get token : ".$result_."\n\r";
 	
 	if(curl_error($chOne))
 	  {
-				echo 'error:' . curl_error($chOne)."\n";
+				echo 'error get token :' . curl_error($chOne)."\n\r";
 			 }
 
-	$result_ = json_decode($result, true); 
+	
 	if ($result_['status'] == 200) 
 	   {	
 		// save data url
@@ -52,7 +53,7 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 		$response = curl_exec( $ch );
 		curl_close($ch);		
 	}
-	echo "OK 1+2\n";
+	echo "OK passed 1+2"."\n\r";
 }
-echo "end\n";
+echo "end process"."\n\r";
 ?>
