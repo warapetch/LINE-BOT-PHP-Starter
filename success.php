@@ -1,5 +1,5 @@
 <?php
-$token = $_POST['access_token'];
+$token = $_GET['access_token'];
 ?>
 <!DOCTYPE html>
 <html>
