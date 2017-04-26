@@ -12,8 +12,8 @@ $data = 'grant_type=authorization_code&code='.$code.
 	'&client_secret='.$client_secret;
 			   
 					
-        //$post = json_encode($data);
-        $post = $data;
+        $post = json_encode($data);
+        //$post = $data;
 
 		$headers = 'content-type: application/x-www-form-urlencoded';
 		$ch = curl_init($url);
