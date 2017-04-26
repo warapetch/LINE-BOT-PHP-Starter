@@ -15,14 +15,20 @@ $data = 'grant_type=authorization_code&code='.$code.
         //$post = urlencode($data);
         $post = $data;
 
-		$headers = 'content-type: application/x-www-form-urlencoded';
+		$headers = ['content-type: application/x-www-form-urlencoded'];
 		$ch = curl_init($url);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-		//curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);				
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);	
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		//curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		//curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);				
+		//curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		//curl_setopt($ch, CURLOPT_POSTFIELDS, $post);	
+		//curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+
+		curl_setopt($ch, curlopt_customrequest, "POST");
+		curl_setopt($ch, curlopt_returntransfer, true);
+		curl_setopt($ch, curlopt_httpheader, $headers);		
+		curl_setopt($ch, curlopt_postfields, $post);		
+		curl_setopt($ch, curlopt_followlocation, 1);
+
 		$result = curl_exec($ch);
 		curl_close($ch);
         
