@@ -22,7 +22,7 @@ $data = 'grant_type=authorization_code&code='.$code.
 		curl_setopt($ch, curlopt_postfields, $post);
 		curl_setopt($ch, curlopt_httpheader, $headers);
 		curl_setopt($ch, curlopt_followlocation, 1);
-		curl_setopt($ch, CURLOPT_POST, 1);
+		//curl_setopt($ch, CURLOPT_POST, 1);
 		$result = curl_exec($ch);
 		curl_close($ch);
         
