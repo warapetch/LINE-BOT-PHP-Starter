@@ -39,10 +39,11 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 	
 	if ($result_['status'] == 200) 
 	   {	
+		echo "enter post data ..."."\n\r";
 		// save data url
 		$url = 'http://103.253.75.184/post_callback.php';
 	
-		$myvars = 'user='.$_GET["state"].'&token='.$result_['access_token'];
+		$myvars = 'state='.$_GET["state"].'&access_token='.$result_['access_token'];
 		
 		$ch = curl_init( $url );
 		curl_setopt( $ch, CURLOPT_POST, 1);
