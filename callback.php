@@ -12,7 +12,7 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 	$postdata = $postdata.'&code='.$_GET["code"];
 	$postdata = $postdata.'&redirect_uri='.$redirect_uri;
 	$postdata = $postdata.'&client_id='.$client_id;
-	$postdata = $postdata.'&client_secret=';
+	$postdata = $postdata.'&client_secret='.$client_secret;
 
 	$chOne = curl_init(); 
 	curl_setopt( $chOne, CURLOPT_URL, "https://notify-bot.line.me/oauth/token"); 
