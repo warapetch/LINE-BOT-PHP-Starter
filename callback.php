@@ -32,7 +32,7 @@ $data = 'grant_type=authorization_code&code='.$code.
 		$result = curl_exec($ch);
 		curl_close($ch);
         
-       		$result = json_decode($result);
+       		/*$result = json_decode($result);
 	
 		// save data url
 		$url = 'http://103.253.75.184/post_callback.php';
@@ -47,6 +47,6 @@ $data = 'grant_type=authorization_code&code='.$code.
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
 		$response = curl_exec( $ch );
 		curl_close($ch);		
-	
+	*/
 	
 ?>
