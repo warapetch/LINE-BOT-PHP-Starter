@@ -25,7 +25,7 @@ $token = $_GET['access_token'];
     <p style="text-align: center;">&nbsp;</p>
     <p style="text-align: center;">&nbsp;</p>
     <form method  = "post"
-      action  = "<?=$_SERVER['file:///E|/php/web/php_self']?>" 
+      action  = "<?=$_SERVER['php_self']?>" 
       onSubmit= "window.close();">
   <div align="center">
     <input type="submit" value="ปิดหน้าต่าง" />
