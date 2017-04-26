@@ -6,7 +6,10 @@ $code  = $_GET['code'];
 $state = $_GET['state'];
 
 $url = 'https://notify-bot.line.me/oauth/token';
-$data = 'grant_type=authorization_code&code='.$code.'&redirect_uri='.$redirect_uri.'&client_id='.$client_id.'&client_secret='.$client_secret;
+$data = 'grant_type=authorization_code&code='.$code.
+	'&redirect_uri='.$redirect_uri.
+	'&client_id='.$client_id.
+	'&client_secret='.$client_secret;
 			   
 					
         $post = json_encode($data);
@@ -20,7 +23,7 @@ $data = 'grant_type=authorization_code&code='.$code.'&redirect_uri='.$redirect_u
 		$result = curl_exec($ch);
 		curl_close($ch);
         
-       
+       		$result = json_decode($result);
 	
 		// save data url
 		$url = 'http://103.253.75.184/post_callback.php';
