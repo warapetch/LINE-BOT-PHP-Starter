@@ -29,7 +29,7 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 	$result = curl_exec( $chOne ); 
         
 	$result_ = json_decode($result, true); 
-	echo "post get token : ".$result_."\n\r";
+	echo "post get token : ".$result." status = ".$result_['status']."\n\r";
 	
 	if(curl_error($chOne))
 	  {
