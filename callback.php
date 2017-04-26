@@ -1,11 +1,11 @@
 <?php
 // ได้รับการ ช่วยเหลือจาก คุณ ศุภชัย วิสาชัย  http://www.wisadev.com //
 // 26/4/2560
-
 $client_id = 'TSsCKpdeq6LyZtwzgZjVdF';
 $client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
 $redirect_uri = 'https://fitness-thai.herokuapp.com/callback.php';
 
+echo "Enter process\n";
 if (isset($_GET["code"])&&isset($_GET["state"]))
    {
 	$postdata = 'grant_type=authorization_code';
@@ -13,7 +13,7 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 	$postdata = $postdata.'&redirect_uri='.$redirect_uri;
 	$postdata = $postdata.'&client_id='.$client_id;
 	$postdata = $postdata.'&client_secret='.$client_secret;
-
+	
 	$chOne = curl_init(); 
 	curl_setopt( $chOne, CURLOPT_URL, "https://notify-bot.line.me/oauth/token"); 
 	// SSL USE 
@@ -28,6 +28,13 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 	curl_setopt( $chOne, CURLOPT_RETURNTRANSFER, 1); 
 	$result = curl_exec( $chOne ); 
         
+	echo "post get token\n";
+	
+	if(curl_error($chOne))
+	  {
+				echo 'error:' . curl_error($chOne)."\n";
+			 }
+
 	$result_ = json_decode($result, true); 
 	if ($result_['status'] == 200) 
 	   {	
@@ -45,5 +52,7 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 		$response = curl_exec( $ch );
 		curl_close($ch);		
 	}
-}	
+	echo "OK 1+2\n";
+}
+echo "end\n";
 ?>
