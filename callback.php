@@ -56,7 +56,7 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 	}
 	//echo "OK passed 1+2"."\n\r";
 	
-    	header("Location: success.php");
+    	header("Location: success.php?<?php echo $result_['access_token'] ?> ");
 
 }
 //echo "end process"."\n\r";
