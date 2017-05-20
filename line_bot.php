@@ -1,6 +1,9 @@
 <?php
+// file : line-bot.php
 // last update : 60-04-22 12.40 //
-	
+//------------------------------------------------------
+include "line_notify_setup.php";
+
 function DateThai($strDate)
 {
 	$time_zone = 7;
@@ -18,8 +21,7 @@ return "$strDay $strMonthThai $strYear, $strHour:$strMinute";
 }
 
 // < YOUR CHANNEL_ACCESS_TOKEN >
-$channel_access_token = 'doQP7zT8D1d55KBBmrSlkuYsRQL2x6I+xAQvTI963bInXFZp+gjYXLRic73R4Cwy90xFMfs/W3XPONeFmTQ+bbZAcGy/XshJDppaQfpXywrAkGfIEvcxbfwc/98W2ilmiAAjkRXafEGd0vAI6bIkjwdB04t89/1O/w1cDnyilFU=';
-
+$channel_access_token = LINE_BOT_CHANNEL_ACCESS_TOKEN;
 
 // Get POST body content
 $content = file_get_contents('php://input');
@@ -96,7 +98,7 @@ $dat_project_group_user	  = 'all';
 					
 					// Build message to reply back
 					//---------------------------------------------------------------------------------------------------------------------
-					if ($text == 'data'){
+					if (($text == 'register') or ($text == 'สมัคร')) {
 					   $messages = [
 								   'type' => 'text',
 									'text' => 'ข้อมูลคุณคือ >> '."\n\r".'"Reply Token" = '.$replyToken.
@@ -142,7 +144,8 @@ $dat_project_group_user	  = 'all';
 			} // loop events
 		 
 		// save data url
-		$url = 'http://103.253.75.184/post_user_id.php'; // <Your Server / update_user_data.php >
+                // <YOUR POST DATA URL> 
+		$url = POST_LINE_BOT_DATA_URL;
 					
 		$myvars = 'userid=' . $userid . 
 			  '&display_name='.$dat_displayname.
@@ -157,13 +160,13 @@ $dat_project_group_user	  = 'all';
 		curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars );
 		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt( $ch, CURLOPT_HEADER, 0);
-		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-		//curl_setopt( $ch, CURLOPT_ENCODING, 'UTF-8'); 
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);		
 		$response = curl_exec( $ch );
 		curl_close($ch);		
 	} // Events <> ''
 	
 //echo "OK : token = ".$replyToken.' userid = '.$userid;
+	// OPEN NEW PAGE
 	$myvars = 'userid='.$userid;
     	header("Location: line_bot_success.php?".$myvars);
 
