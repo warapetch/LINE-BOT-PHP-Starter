@@ -97,6 +97,7 @@ $replyToken       = '<NULL>';
 								'text' => 'User ID ของมูลคุณคือ >> '."\n\r".$dat_userid
 									];
 						}
+					else
 					if ($text == 'data'){
 					 	$messages = [
 								   'type' => 'text',
