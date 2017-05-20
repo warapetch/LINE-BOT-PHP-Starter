@@ -1,4 +1,5 @@
 <?php
+// Line Notify Callback
 // ได้รับการ ช่วยเหลือจาก คุณ ศุภชัย วิสาชัย  http://www.wisadev.com //
 // 26/4/2560
 $client_id = 'TSsCKpdeq6LyZtwzgZjVdF';
@@ -56,7 +57,7 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 	}
 	//echo "OK passed 1+2"."\n\r";
 	$myvars = 'state='.$_GET["state"].'&access_token='.$result_['access_token'];
-    	header("Location: success.php?".$myvars);
+    	header("Location: line_notify_success.php?".$myvars);
 
 }
 //echo "end process"."\n\r";
