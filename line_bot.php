@@ -160,8 +160,8 @@ $replyToken       = '<NULL>';
 		
 	} // Events <> ''
 	
-echo "OK : Dynamic token = ".$replyToken.' userid = '.$userid;
+	// echo "OK : Dynamic token = ".$replyToken.' userid = '.$userid;
 	// OPEN NEW PAGE
-	//$myvars = 'userid='.$userid;
-    	//header("Location: line_bot_success.php?".$myvars);
+	$myvars = 'userid='.$userid;
+    	header("Location: line_bot_success.php?".$myvars);
 ?>
