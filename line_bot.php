@@ -27,12 +27,12 @@ $raw_text_income  = json_encode($events);
 // Initialize
 $is_type_user     = false;
 $dat_displayname  = '<NULL>';
-$dat_userid       = '';
-$dat_pictureurl   = '';
-$dat_statusmsg    = '';
+$dat_userid       = '<NULL>';
+$dat_pictureurl   = '<NULL>';
+$dat_statusmsg    = '<NULL>';
 $dat_project_code	  = 'project1';
 $dat_project_group_user	  = 'all';
-$replyToken = '';
+$replyToken       = '<NULL>';
 
 	// Case Message from ...
 	if  ($events['events'][0]['source']['type'] == 'user') 
