@@ -6,12 +6,10 @@ include "line_notify_setup.php";
 
 function DateThai($strDate)
 {
-	$time_zone = 7;
-	
 	$strYear = date("Y",strtotime($strDate))+543;
 	$strMonth= date("n",strtotime($strDate));
 	$strDay= date("j",strtotime($strDate));
-	$strHour= date("H",strtotime($strDate))+$time_zone;
+	$strHour= date("H",strtotime($strDate));
 	$strMinute= date("i",strtotime($strDate));
 	$strSeconds= date("s",strtotime($strDate));
 	$strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
