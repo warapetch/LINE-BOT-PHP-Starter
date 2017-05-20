@@ -2,21 +2,21 @@
 // Line Notify Callback
 // ได้รับการ ช่วยเหลือจาก คุณ ศุภชัย วิสาชัย  http://www.wisadev.com //
 // 26/4/2560
-$client_id = 'TSsCKpdeq6LyZtwzgZjVdF';
-$client_secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';
-$redirect_uri = 'https://fitness-thai.herokuapp.com/callback.php';
+//------------------------------------------------------------------------------
+include "line_notify_setup.php";
 
-//echo "Enter process ...#1"."\n\r";
+
+
 if (isset($_GET["code"])&&isset($_GET["state"]))
    {
 	$postdata = 'grant_type=authorization_code';
 	$postdata = $postdata.'&code='.$_GET["code"];
-	$postdata = $postdata.'&redirect_uri='.$redirect_uri;
-	$postdata = $postdata.'&client_id='.$client_id;
-	$postdata = $postdata.'&client_secret='.$client_secret;
+	$postdata = $postdata.'&redirect_uri='.LINE_NOTIFY_CALLBACK_URL;
+	$postdata = $postdata.'&client_id='.LINE_NOTIFY_CLIENT_ID;
+	$postdata = $postdata.'&client_secret='.LINE_NOTIFY_CLIENT_SECRET;
 	
 	$chOne = curl_init(); 
-	curl_setopt( $chOne, CURLOPT_URL, "https://notify-bot.line.me/oauth/token"); 
+	curl_setopt( $chOne, CURLOPT_URL, LINE_NOTIFY_GET_TOKEN_URL); 
 	// SSL USE 
 	curl_setopt( $chOne, CURLOPT_SSL_VERIFYHOST, 0); 
 	curl_setopt( $chOne, CURLOPT_SSL_VERIFYPEER, 0); 
@@ -42,11 +42,10 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 	   {	
 		//echo "enter post data ..."."\n\r";
 		// save data url
-		$url = 'http://103.253.75.184/post_callback.php';
-	
+			
 		$myvars = 'state='.$_GET["state"].'&access_token='.$result_['access_token'];
 		
-		$ch = curl_init( $url );
+		$ch = curl_init( POST_LINE_NOTIFY_DATA_URL );
 		curl_setopt( $ch, CURLOPT_POST, 1);
 		curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars );
 		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
