@@ -96,7 +96,7 @@ $dat_project_group_user	  = 'all';
 					
 					// Build message to reply back
 					//---------------------------------------------------------------------------------------------------------------------
-					if (($text == 'register') or ($text == 'สมัคร')) {
+					if (($text == 'register') || ($text == 'สมัคร')) {
 					   $messages = [
 								   'type' => 'text',
 									'text' => 'ข้อมูลคุณคือ >> '."\n\r".'"Reply Token" = '.$replyToken.
@@ -160,12 +160,13 @@ $dat_project_group_user	  = 'all';
 		curl_setopt( $ch, CURLOPT_HEADER, 0);
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);		
 		$response = curl_exec( $ch );
+		echo "post data = ".$response;
 		curl_close($ch);		
 	} // Events <> ''
 	
-//echo "OK : token = ".$replyToken.' userid = '.$userid;
+echo "OK : token = ".$replyToken.' userid = '.$userid;
 	// OPEN NEW PAGE
-	$myvars = 'userid='.$userid;
-    	header("Location: line_bot_success.php?".$myvars);
+	//$myvars = 'userid='.$userid;
+    	//header("Location: line_bot_success.php?".$myvars);
 
 ?>
