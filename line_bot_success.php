@@ -1,6 +1,7 @@
 <?php
 // Line bot
 $line_user_id = $_GET['userid'];
+$rawdata = $_GET['rawdata'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,6 +22,9 @@ $line_user_id = $_GET['userid'];
       </h1>
     <h1 style="text-align: center;">LINE@ USER ID<br>
     </h1>
+	  <?php 
+	     echo "rawdata=".$rawdata."\n";
+	  ?>
     <h1 class="style1" style="text-align: center;"><?php echo $line_user_id; ?></h1>
     <p style="text-align: center;">&nbsp;</p>
     <p style="text-align: center;">(คัดลอก USER ID นำไปใช้งานได้เลย) </p>
