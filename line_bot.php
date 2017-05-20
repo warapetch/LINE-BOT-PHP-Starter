@@ -117,7 +117,7 @@ $dat_project_group_user	  = 'all';
 						
 					$messages = [
 							'type' => 'text',
-						        'text' => '(พิมพ์คำว่า data เพื่อดูข้อมูล) '."\n\r".'Echo = '.$text
+						        'text' => '(พิมพ์คำว่า register หรือ สมัคร เพื่อลงทะเบียนรับข่าวสาร) '."\n\r".'Echo = '.$text
 						    ];			
 					}
 					
