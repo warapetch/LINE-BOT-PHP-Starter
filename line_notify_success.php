@@ -38,6 +38,8 @@ $token = $_GET['access_token'];
 		}
 			</script>
 	      <a href="#" onclick="close_window();return false;"> >> ปิดหน้าต่าง << </a>
+		<br>
+             <a href="#" onclick="window.open('', '_self', ''); window.close();"> >> Close << </a>"		  
         </div>
 	</form>
   </div>
