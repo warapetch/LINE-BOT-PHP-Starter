@@ -1,4 +1,5 @@
 <?php
+// Line Notify
 $token = $_GET['access_token'];
 ?>
 <!DOCTYPE html>
