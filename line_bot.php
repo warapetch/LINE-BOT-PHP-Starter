@@ -92,15 +92,21 @@ $replyToken       = '<NULL>';
 					// Build message to reply back
 					//---------------------------------------------------------------------------------------------------------------------
 					if (($text == 'register') || ($text == 'สมัคร')) {
-					   $messages = [
+					   	$messages = [
+								'type' => 'text',
+								'text' => 'User ID ของมูลคุณคือ >> '."\n\r".$dat_userid
+									];
+						}
+					if ($text == 'data'){
+					 	$messages = [
 								   'type' => 'text',
 									'text' => 'ข้อมูลคุณคือ >> '."\n\r".'"Reply Token" = '.$replyToken.
 									"\n\r".' "Display" = '.$dat_displayname.
 									"\n\r".' "UserId" = '.$dat_userid.
 									"\n\r".' "Picture URL" ='.$dat_pictureurl.
 									"\n\r".' "Status Message" = '.$dat_statusmsg
-									];
-						}
+									];						
+					 }
 					else
 					{
 					// CASE AI , SEARCH , INQUERY
