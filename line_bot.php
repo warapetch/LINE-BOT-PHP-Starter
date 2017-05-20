@@ -142,7 +142,7 @@ $dat_project_group_user	  = 'all';
 			} // loop events
 		 
 		// save data url
-		$url = 'http://103.253.75.184/updateuser.php'; // <Your Server / update_user_data.php >
+		$url = 'http://103.253.75.184/post_user_id.php'; // <Your Server / update_user_data.php >
 					
 		$myvars = 'userid=' . $userid . 
 			  '&display_name='.$dat_displayname.
@@ -163,5 +163,8 @@ $dat_project_group_user	  = 'all';
 		curl_close($ch);		
 	} // Events <> ''
 	
-echo "OK : token = ".$replyToken.' userid = '.$userid;
+//echo "OK : token = ".$replyToken.' userid = '.$userid;
+	$myvars = 'userid='.$userid;
+    	header("Location: line_bot_success.php?".$myvars);
+
 ?>
