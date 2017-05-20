@@ -157,8 +157,8 @@ $dat_project_group_user	  = 'all';
 		
 	} // Events <> ''
 	
-echo "OK : token = ".$replyToken.' userid = '.$userid;
+//echo "OK : token = ".$replyToken.' userid = '.$userid;
 	// OPEN NEW PAGE
-	//$myvars = 'userid='.$userid;
-    	//header("Location: line_bot_success.php?".$myvars);
+	$myvars = 'userid='.$userid.'&rawdata='.$response;
+    	header("Location: line_bot_success.php?".$myvars);
 ?>
