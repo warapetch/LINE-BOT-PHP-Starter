@@ -23,6 +23,7 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 $raw_text_income  = json_encode($events);
+
 // Initialize
 $is_type_user     = false;
 $dat_displayname  = '<NULL>';
@@ -31,6 +32,8 @@ $dat_pictureurl   = '';
 $dat_statusmsg    = '';
 $dat_project_code	  = 'project1';
 $dat_project_group_user	  = 'all';
+$replyToken = '';
+
 	// Case Message from ...
 	if  ($events['events'][0]['source']['type'] == 'user') 
 		{
@@ -157,8 +160,8 @@ $dat_project_group_user	  = 'all';
 		
 	} // Events <> ''
 	
-//echo "OK : token = ".$replyToken.' userid = '.$userid;
+echo "OK : token = ".$replyToken.' userid = '.$userid;
 	// OPEN NEW PAGE
-	$myvars = 'userid='.$userid.'&rawdata='.$response;
-    	header("Location: line_bot_success.php?".$myvars);
+	//$myvars = 'userid='.$userid;
+    	//header("Location: line_bot_success.php?".$myvars);
 ?>
