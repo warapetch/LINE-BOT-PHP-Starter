@@ -6,7 +6,7 @@
 ขอบคุณอย่างมากมาย ต้องยกให้ คุณศุภชัย วิสาชัย
 http://www.wisadev.com/blog/line-notify/
 
-สำหรับผู้ที่เริ่มต้น ศึกษา Line Notify
-- Private
-- Service
-- Bot
+สำหรับผู้ที่เริ่มต้น ศึกษา Line Notify + Line Message API + Bot
+- Private (Line Notify : Private)
+- Service (Line Notify : Service)
+- Bot (Line at + Line Message API)
