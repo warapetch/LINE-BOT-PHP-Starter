@@ -18,16 +18,11 @@ function DateThai($strDate)
 return "$strDay $strMonthThai $strYear, $strHour:$strMinute";
 }
 
-// < YOUR CHANNEL_ACCESS_TOKEN >
-$channel_access_token = LINE_BOT_CHANNEL_ACCESS_TOKEN;
-
 // Get POST body content
 $content = file_get_contents('php://input');
-
 // Parse JSON
 $events = json_decode($content, true);
 $raw_text_income  = json_encode($events);
-
 // Initialize
 $is_type_user     = false;
 $dat_displayname  = '<NULL>';
@@ -36,7 +31,6 @@ $dat_pictureurl   = '';
 $dat_statusmsg    = '';
 $dat_project_code	  = 'project1';
 $dat_project_group_user	  = 'all';
-
 	// Case Message from ...
 	if  ($events['events'][0]['source']['type'] == 'user') 
 		{
@@ -55,8 +49,6 @@ $dat_project_group_user	  = 'all';
 			$userid = $events['events'][0]['source']['roomId'];
 			$usercaption = ' roomid=';	
 	}
-
-
 		// Validate parsed JSON data
 		if (!is_null($events['events'])) {
 			
@@ -76,7 +68,7 @@ $dat_project_group_user	  = 'all';
 					if ($is_type_user) 
 					 {
 						$url = 'https://api.line.me/v2/bot/profile/'.$userid;
-						$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $channel_access_token);
+						$headers = array('Content-Type: application/json', 'Authorization: Bearer ' .LINE_BOT_CHANNEL_ACCESS_TOKEN);
 						$ch = curl_init($url);
 						curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 						curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);				
@@ -128,7 +120,7 @@ $dat_project_group_user	  = 'all';
 					         ];
 					
 					$post = json_encode($data);
-					$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $channel_access_token);
+					$headers = array('Content-Type: application/json', 'Authorization: Bearer ' .LINE_BOT_CHANNEL_ACCESS_TOKEN);
 					$ch = curl_init($url);
 					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -141,9 +133,9 @@ $dat_project_group_user	  = 'all';
 				} // cast text
 			} // loop events
 		 
-		// save data url
-                // <YOUR POST DATA URL> 
-		$url = POST_LINE_BOT_DATA_URL;
+
+        // <YOUR POST DATA URL> 
+		//$url = POST_LINE_BOT_DATA_URL;
 					
 		$myvars = 'userid=' . $userid . 
 			  '&display_name='.$dat_displayname.
@@ -153,7 +145,7 @@ $dat_project_group_user	  = 'all';
 			  '&group_user='.$dat_project_group_user			  
 			  ;
 		
-		$ch = curl_init( $url );
+		$ch = curl_init( POST_LINE_BOT_DATA_URL );
 		curl_setopt( $ch, CURLOPT_POST, 1);
 		curl_setopt( $ch, CURLOPT_POSTFIELDS, $myvars );
 		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
@@ -161,12 +153,12 @@ $dat_project_group_user	  = 'all';
 		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);		
 		$response = curl_exec( $ch );
 		echo "post data = ".$response;
-		curl_close($ch);		
+		curl_close($ch);
+		
 	} // Events <> ''
 	
 echo "OK : token = ".$replyToken.' userid = '.$userid;
 	// OPEN NEW PAGE
 	//$myvars = 'userid='.$userid;
     	//header("Location: line_bot_success.php?".$myvars);
-
 ?>
