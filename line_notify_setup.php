@@ -39,8 +39,7 @@ define('LINE_NOTIFY_CALLBACK_URL', $Line_Notify_Callback_URL);
 define('POST_LINE_NOTIFY_DATA_URL',$Post_Line_Notify_Data_URL);
 
 define('LINE_NOTIFY_AUTHORIZE_URL_FOR_CLIENT',$Line_Notify_GetAuthorize_URL.'?response_type=code'.
-              '&client_id='+$Line_Notify_Client_ID.'&redirect_uri='+$Line_Notify_Callback_URL+
-              '&scope=notify'+
-              '&state='; // State wait for Bot
+              '&client_id='.$Line_Notify_Client_ID.'&redirect_uri='.$Line_Notify_Callback_URL.
+              '&scope=notify&state='; // State wait for Bot
 
 ?>
