@@ -1,6 +1,7 @@
 <?php
 // file : line-bot.php
-// last update : 60-04-22 12.40 //
+// Create : 60-04-22 12.40 //
+// last update : 60-05-29 12.40 //
 //------------------------------------------------------
 include "line_notify_setup.php";
 
@@ -87,6 +88,7 @@ $replyToken       = '<NULL>';
 						$dat_pictureurl   = $userprofile['pictureUrl'];
 						$dat_statusmsg    = $userprofile['statusMessage'];
 						
+						// เตรียม ลิงค์ สมัคร Line Notify
 						$Line_Notify_Authorize_URL = LINE_NOTIFY_AUTHORIZE_URL_FOR_CLIENT.urlencode($dat_displayname).'&user_id='.$dat_userid;
 					}
 					
