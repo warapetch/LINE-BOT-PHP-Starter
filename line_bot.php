@@ -87,7 +87,7 @@ $replyToken       = '<NULL>';
 						$dat_pictureurl   = $userprofile['pictureUrl'];
 						$dat_statusmsg    = $userprofile['statusMessage'];
 						
-						$Line_Notify_Authorize_URL = LINE_NOTIFY_AUTHORIZE_URL_FOR_CLIENT.url_encode($dat_displayname).'&user_id='.$dat_userid;
+						$Line_Notify_Authorize_URL = LINE_NOTIFY_AUTHORIZE_URL_FOR_CLIENT.urlencode($dat_displayname).'&user_id='.$dat_userid;
 					}
 					
 					// Build message to reply back
