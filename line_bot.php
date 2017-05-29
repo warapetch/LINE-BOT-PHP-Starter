@@ -87,6 +87,7 @@ $replyToken       = '<NULL>';
 						$dat_pictureurl   = $userprofile['pictureUrl'];
 						$dat_statusmsg    = $userprofile['statusMessage'];
 						
+						$Line_Notify_Authorize_URL = LINE_NOTIFY_AUTHORIZE_URL_FOR_CLIENT.$dat_userid;
 					}
 					
 					// Build message to reply back
@@ -94,7 +95,7 @@ $replyToken       = '<NULL>';
 					if (($text == 'register') || ($text == 'สมัคร')) {
 					   	$messages = [
 								'type' => 'text',
-								'text' => 'User ID ของมูลคุณคือ >> '."\n\r".$dat_userid
+								'text' => 'User ID ของมูลคุณคือ >> '."\n\r".$dat_userid."\n\r".'สมัครรับข่าวสาร คลิ๊กลิงค์ >>'.$Line_Notify_Authorize_URL
 									];
 						}
 					else
