@@ -55,7 +55,8 @@ if (isset($_GET["code"])&&isset($_GET["state"]))
 		curl_close($ch);		
 	}
 	//echo "OK passed 1+2"."\n\r";
-	$myvars = 'state='.$_GET["state"].'&access_token='.$result_['access_token'];
+        // state = Display Name for bot  
+	$myvars = 'state='.urlencode($_GET["state"]).'&access_token='.$result_['access_token'];
     	header("Location: line_notify_success.php?".$myvars);
 
 }
