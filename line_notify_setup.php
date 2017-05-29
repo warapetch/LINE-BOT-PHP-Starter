@@ -1,5 +1,7 @@
 <?php
 // file : line_notify_setup.php
+// Create : 60-04-22 12.40 //
+// last update : 60-05-29 12.40 //
 //------------------------------------------------------------------------------
 // Set time zone = thai +7
 date_default_timezone_set('Asia/Bangkok');
