@@ -1,6 +1,8 @@
 <?php
 // Line Notify
+$user_display_name =  $_GET['state'];
 $token = $_GET['access_token'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +23,8 @@ $token = $_GET['access_token'];
       </h1>
     <h1 style="text-align: center;">TOKEN<br>
     </h1>
-    <h1 class="style1" style="text-align: center;"><?php echo $token; ?></h1>
+	<h1 class="style1" style="text-align: center;"><?php echo $user_display_name; ?></h1>    
+	<h1 class="style1" style="text-align: center;"><?php echo $token; ?></h1>
     <p style="text-align: center;">&nbsp;</p>
     <p style="text-align: center;">(คัดลอก Token นำไปใช้งานได้เลย) </p>
     <p style="text-align: center;">&nbsp;</p>
