@@ -22,14 +22,14 @@ date_default_timezone_set('Asia/Bangkok');
  
  // BOT LINE@
 define('LINE_BOT_CHANNEL_ACCESS_TOKEN','doQP7zT8D1d55KBBmrSlkuYsRQL2x6I+xAQvTI963bInXFZp+gjYXLRic73R4Cwy90xFMfs/W3XPONeFmTQ+bbZAcGy/XshJDppaQfpXywrAkGfIEvcxbfwc/98W2ilmiAAjkRXafEGd0vAI6bIkjwdB04t89/1O/w1cDnyilFU=');
-define('POST_LINE_BOT_DATA_URL','http://103.253.75.184/post_user_id.php');
+define('POST_LINE_BOT_DATA_URL','https://fitness-thai.herokuapp.com/post_user_id.php');
  
  
  // LINE NOTIFY
 $XLine_Notify_GetToken_URL      = 'https://notify-bot.line.me/oauth/token';  // FIXED
 $XLine_Notify_GetAuthorize_URL  = 'https://notify-bot.line.me/oauth/authorize'; // FIXED
-$XLine_Notify_Callback_URL      = 'http://103.253.75.184/line_ntf0000/line_notify_callback.php'; // ดูจาก Line Notify ว่ากำหนดไว้ว่าอะไร
-$XPost_Line_Notify_Data_URL     = 'http://103.253.75.184/line_notify_post_token.php'; // สำหรับ ส่งข้อมูลไป บันทึก
+$XLine_Notify_Callback_URL      = 'https://fitness-thai.herokuapp.com/line_notify_callback.php'; // ดูจาก Line Notify ว่ากำหนดไว้ว่าอะไร
+$XPost_Line_Notify_Data_URL     = 'https://fitness-thai.herokuapp.com/line_notify_post_token.php'; // สำหรับ ส่งข้อมูลไป บันทึก
 
 $XLine_Notify_Client_ID     = 'TSsCKpdeq6LyZtwzgZjVdF';  // ดูจาก Line Notify
 $XLine_Notify_Client_Secret = 'Q53ll8T7LXdffYA4WH9yYAgH0WibkF0AHkRXjFCKLph';  // ดูจาก Line Notify
